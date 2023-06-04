@@ -10,8 +10,16 @@
     
     <h1  th:text="${titulo}"></h1>
 
-    <span th:text="${usuario.nombre}"></span>
-    <span th:text="${usuario.apellidos}"></span>
+    <div>
+        <span th:text="${usuario.nombre}"></span>
+        <span th:text="${usuario.apellidos}"></span>
+    </div>
+
+    <div>
+        <span th:if="${usuario.email}" th:text="${usuario.email}"></span>
+        <!-- <span th:if="${usuario.email == null}" th:text="'Usuario sin email'"></span> -->
+        <span th:if="${usuario.email == null}">El usuario no tienen correo</span>
+    </div>
 
 </body>
 </html>
