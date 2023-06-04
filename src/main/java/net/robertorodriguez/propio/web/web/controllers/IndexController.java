@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.robertorodriguez.propio.web.web.models.Usuario;
@@ -57,6 +58,18 @@ public class IndexController {
     @RequestMapping("/lista")
     public String listar(Model model) {
 
+        model.addAttribute("titulo", "Listado de usuarios");
+
+        return "lista";
+    }
+
+    /**
+     * Pasa la lista de usuarios a la vista, con el nombre "usuarios".
+     * @return la colección de usuarios
+     */
+    @ModelAttribute("usuarios")
+    public List<Usuario> poblarUsuarios(){
+
         // List<Usuario> usuarios = new ArrayList<>();
         // usuarios.add( new Usuario("Andrés","Montes Pinto","andres@correo.con"));
         // usuarios.add( new Usuario("Juana","Pérez Martín","juana@correo.con"));
@@ -68,10 +81,8 @@ public class IndexController {
                 new Usuario("Luisa", "López Lorenzo", "luisa@correo.con"),
                 new Usuario("Benito", "Hernandez Pancha", "benito@correo.con"));
 
-        model.addAttribute("titulo", "Listado de usuarios");
-        model.addAttribute("usuarios", usuarios);
+                return usuarios;
 
-        return "lista";
     }
 
 }

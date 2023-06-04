@@ -34,6 +34,5 @@ MAPEAR EL CONTROLADOR CON REQUEST MAPPING
 * Indica una ruta de primer nivel, obligatoria para acceder a la vista.
 
 
-
-MODELS
-Se crea el modelo Usuario y el handler IndexController.perfil para mostrar los datos.
+PASAR DATOS CON ModelAttribute
+Se crea un método con el decorador @ModelAttribute(nombreDelAtributo) y este atributo estará listos en todos los métodos del controlador.
