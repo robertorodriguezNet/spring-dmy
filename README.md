@@ -28,3 +28,7 @@ PASAR LOS DATOS DEL CONTROLADOR A LA VISTA
         map.put( "clave", "valor" );
         ...
     }
+
+
+MAPEAR EL CONTROLADOR CON REQUEST MAPPING
+* Indica una ruta de primer nivel, obligatoria para acceder a la vista.
