@@ -32,3 +32,8 @@ PASAR LOS DATOS DEL CONTROLADOR A LA VISTA
 
 MAPEAR EL CONTROLADOR CON REQUEST MAPPING
 * Indica una ruta de primer nivel, obligatoria para acceder a la vista.
+
+
+
+MODELS
+Se crea el modelo Usuario y el handler IndexController.perfil para mostrar los datos.
