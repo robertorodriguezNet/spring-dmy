@@ -1,6 +1,7 @@
 package net.robertorodriguez.propio.web.web.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -41,21 +42,31 @@ public class IndexController {
         usuario.setEmail("andres@correo.con");
 
         model.addAttribute("usuario", usuario);
-        model.addAttribute("titulo", "Perfil del usuario " + usuario.getNombre( ));
+        model.addAttribute("titulo", "Perfil del usuario " + usuario.getNombre());
 
         return "perfil";
 
-    }    
-    
+    }
+
     /**
      * Carga la lista de usuarios.
+     * 
      * @param model Model
      * @return la vista
      */
     @RequestMapping("/lista")
-    public String listar(Model model){
+    public String listar(Model model) {
 
-        List<Usuario> usuarios = new ArrayList<>();
+        // List<Usuario> usuarios = new ArrayList<>();
+        // usuarios.add( new Usuario("Andrés","Montes Pinto","andres@correo.con"));
+        // usuarios.add( new Usuario("Juana","Pérez Martín","juana@correo.con"));
+        // usuarios.add( new Usuario("Luisa","López Lorenzo","luisa@correo.con"));
+
+        List<Usuario> usuarios = Arrays.asList(
+                new Usuario("Andrés", "Montes Pinto", "andres@correo.con"),
+                new Usuario("Juana", "Pérez Martín", "juana@correo.con"),
+                new Usuario("Luisa", "López Lorenzo", "luisa@correo.con"),
+                new Usuario("Benito", "Hernandez Pancha", "benito@correo.con"));
 
         model.addAttribute("titulo", "Listado de usuarios");
         model.addAttribute("usuarios", usuarios);
