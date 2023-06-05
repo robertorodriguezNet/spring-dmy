@@ -36,3 +36,28 @@ MAPEAR EL CONTROLADOR CON REQUEST MAPPING
 
 PASAR DATOS CON ModelAttribute
 Se crea un método con el decorador @ModelAttribute(nombreDelAtributo) y este atributo estará listos en todos los métodos del controlador.
+
+PASAR DATOS CON @RequestParam
+    @GetMapping("/mix-params")
+    public String param(@RequestParam String saludo, @RequestParam Integer numero, Model model) {
+        ...
+        return "params/ver";
+    }
+
+PASAR DATOS CON HttpServletRequest
+    @GetMapping("/mix-params-request")
+    public String param(HttpServletRequest request, Model model) {
+
+        String saludo = request.getParameter("saludo");
+        Integer numero = null;
+        try {
+            numero = Integer.parseInt(request.getParameter("numero"));
+        } catch (NumberFormatException e) {
+            numero = 0;
+        }
+
+        model.addAttribute("titulo", "Ejemplo de paso de parámteros");
+        model.addAttribute("resultado", "El saludo recibido es '" + saludo + "' y número es '" + numero + "'");
+
+        return "params/ver";
+    }
