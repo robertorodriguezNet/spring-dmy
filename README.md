@@ -61,3 +61,16 @@ PASAR DATOS CON HttpServletRequest
 
         return "params/ver";
     }
+
+PASAR DATOS EN EL PATH CON @PathVariable
+public class EjemploVariablesPathController {
+
+    @GetMapping("/string/{texto}")
+    // public String variables(@PathVariable(name=texto) String textoDiferente){
+    public String variables(@PathVariable String texto, Model model) {
+        model.addAttribute("titulo", "Recibir parámetros de la ruta (@PathVariable)");
+        model.addAttribute("resultado", "El texto enviado en la ruta es: '" + texto + "'");
+
+        return "variables/ver";
+    }
+}
