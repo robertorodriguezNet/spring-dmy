@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,16 @@ import net.robertorodriguez.propio.web.web.models.Usuario;
 @RequestMapping("/app")
 public class IndexController {
 
+    // Valores globales definidos en aplication.properties
+    @Value("${texto.indexcontroller.index.titulo}")
+    private String textoIndex;
+
+    @Value("${texto.indexcontroller.perfil.titulo}")
+    private String textoPerfil;
+
+    @Value("${texto.indexcontroller.listar.titulo}")
+    private String textoListar;
+
     /**
      * Usamos la interfaz Model para pasar datos a la vista.
      * La vista siempre se busca en resources/templates. Si la vista está en
@@ -26,7 +37,7 @@ public class IndexController {
      */
     @GetMapping({ "/index", "/", "", "/home" })
     public String index(Model model) {
-        model.addAttribute("titulo", "Hola Spring Framework");
+        model.addAttribute("titulo", textoIndex);
         return "index";
     }
 
@@ -43,7 +54,7 @@ public class IndexController {
         usuario.setEmail("andres@correo.con");
 
         model.addAttribute("usuario", usuario);
-        model.addAttribute("titulo", "Perfil del usuario " + usuario.getNombre());
+        model.addAttribute("titulo", textoPerfil + " " + usuario.getNombre());
 
         return "perfil";
 
@@ -58,7 +69,7 @@ public class IndexController {
     @RequestMapping("/lista")
     public String listar(Model model) {
 
-        model.addAttribute("titulo", "Listado de usuarios");
+        model.addAttribute("titulo", textoListar);
 
         return "lista";
     }
